@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <title>Privaatsuse kontroll</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 40px;
+        }
+        .kast {
+            background: white;
+            padding: 20px;
+            max-width: 400px;
+            border-radius: 8px;
+        }
+        button {
+            margin-top: 15px;
+            padding: 8px 15px;
+        }
+        .hoiatus {
+            color: red;
+            font-weight: bold;
+        }
+        .ok {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="kast">
+    <h2>Postituse privaatsuse kontroll</h2>
+
+    <p>Vali, kes näeb sinu postitust:</p>
+
+    <select id="nahtavus">
+        <option value="avalik">Avalik</option>
+        <option value="sõbrad">Ainult sõbrad</option>
+        <option value="privaatne">Ainult mina</option>
+    </select>
+
+    <br>
+    <button onclick="kontrolli()">Kontrolli</button>
+
+    <p id="tulemus"></p>
+</div>
+
+<script>
+function kontrolli() {
+    let valik = document.getElementById("nahtavus").value;
+    let tulemus = document.getElementById("tulemus");
+
+    if (valik === "avalik") {
+        tulemus.innerHTML = "⚠️ HOIATUS: Postitus on AVALIK. Kas oled kindel?";
+        tulemus.className = "hoiatus";
+    } else {
+        tulemus.innerHTML = "✅ Postitus ei ole avalik. Privaatsus on korras.";
+        tulemus.className = "ok";
+    }
+}
+</script>
+
+</body>
+</html>
